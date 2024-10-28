@@ -9,6 +9,10 @@ import (
 // "It's alive!" message to indicate that the server is running.
 // It writes the message as a plain text response to the client.
 func home(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
 	w.Write([]byte("It's alive!"))
 }
 
